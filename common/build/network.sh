@@ -15,7 +15,7 @@ gcloud beta compute networks subnets create $PRODUCT_SUBNET \
     --project=$PROJECT_NAME \
     --network=$SERVICES_NETWORK \
     --region=us-central1 \
-    --range=10.29.0.0/24 \
+    --range=10.128.1.0/24 \
     --enable-private-ip-google-access \
     --enable-flow-logs
 
@@ -23,7 +23,7 @@ gcloud beta compute networks subnets create $ADS_SUBNET \
     --project=$PROJECT_NAME \
     --network=$SERVICES_NETWORK \
     --region=us-central1 \
-    --range=10.28.0.0/24 \
+    --range=10.128.2.0/24 \
     --enable-private-ip-google-access \
     --enable-flow-logs
 
@@ -32,7 +32,7 @@ gcloud beta compute networks subnets create $ADS_SUBNET \
 gcloud compute firewall-rules create "$SERVICES_NETWORK-internal-access" \
     --network $SERVICES_NETWORK \
     --allow tcp,udp,icmp \
-    --source-ranges 10.28.0.0/15
+    --source-ranges 10.128.0.0/20
 
 
 gcloud compute firewall-rules create "$SERVICES_NETWORK-ssh" \
